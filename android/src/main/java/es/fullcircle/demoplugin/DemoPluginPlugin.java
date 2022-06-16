@@ -19,4 +19,25 @@ public class DemoPluginPlugin extends Plugin {
         ret.put("value", implementation.echo(value));
         call.resolve(ret);
     }
+    @PluginMethod
+    public void initPlugin(PluginCall call) {
+        String value = call.getString("value");
+        implementation.initPlugin(getContext());
+        JSObject ret = new JSObject();
+        ret.put("value", "ok");
+        call.resolve(ret);
+    }
+
+    @PluginMethod
+    public void getPressure(PluginCall call) {
+        JSObject ret = new JSObject();
+        ret.put("pressure", implementation.getPressure());
+        call.resolve(ret);
+    }
+    @PluginMethod
+    public void getLight(PluginCall call) {
+        JSObject ret = new JSObject();
+        ret.put("light", implementation.getLight());
+        call.resolve(ret);
+    }
 }
